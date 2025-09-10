@@ -274,14 +274,111 @@ void freeList(DoubleLinkedList* list){
     free(list);
 }
 
+// 检查双向链表是否存在环
+// 参数: list - 待检查的双向链表指针
+// 返回值: 如果链表存在环返回 true，否则返回 false
+bool hasCycle(DoubleLinkedList* list){
+    // 若链表为空或者链表中只有一个节点，不可能存在环，直接返回 false
+    if (isEmpty(list) || list->size <=1){
+        return false;
+    }
+
+    // 创建一个指针 current，初始指向链表的头节点，用于遍历链表
+    Node* current = list->head;
+    // 开始遍历链表，直到 current 指针为 NULL
+    while (current != NULL){
+        // 检查当前节点的下一个节点是否存在，并且下一个节点的前驱指针是否指向当前节点
+        // 如果不指向当前节点，说明链表结构异常，存在环，返回 true
+        if (current->next != NULL && current->next->prev != current){
+            return true;
+        }
+        // 将 current 指针移动到下一个节点
+        current = current->next;
+        // 检查 current 指针是否又回到了头节点，如果是则说明存在环，返回 true
+        if (current == list->head){
+            return true;
+        }
+    }
+    // 遍历结束未发现环，返回 false
+    return false;
+}
+
+// 合并两个已排序的双向链表，返回一个新的已排序双向链表
+DoubleLinkedList* merge2Lists(DoubleLinkedList* list1,DoubleLinkedList* list2){
+    // 创建一个新的双向链表，用于存储合并后的结果
+    DoubleLinkedList* res = createDoubleLinkedList();
+    
+    // 创建指针 current1 指向 list1 的头节点，用于遍历 list1
+    Node* current1 = list1->head;
+    // 创建指针 current2 指向 list2 的头节点，用于遍历 list2
+    Node* current2 = list2->head;
+
+    // 同时遍历两个链表，直到其中一个链表遍历完
+    while (current1 != NULL && current2 !=NULL){
+        // 比较当前两个节点的数据，将较小的数据节点添加到结果链表的尾部
+        if (current1->data < current2->data){
+            insertAtTail(res,current1->data);
+            // 移动 current1 指针到下一个节点
+            current1 = current1->next;
+        } else {
+            insertAtTail(res,current2->data);
+            // 移动 current2 指针到下一个节点
+            current2 = current2->next;
+        }
+    }
+
+    // 如果 list1 还有剩余节点，将剩余节点依次添加到结果链表的尾部
+    while (current1 != NULL){
+        insertAtTail(res,current1->data);
+        // 移动 current1 指针到下一个节点
+        current1 = current1->next;
+    }
+    // 如果 list2 还有剩余节点，将剩余节点依次添加到结果链表的尾部
+    while (current2 != NULL){
+        insertAtTail(res,current2->data);
+        // 移动 current2 指针到下一个节点
+        current2 = current2->next;
+    }
+    // 返回合并后的结果链表
+    return res;
+}
+
+Node* findMiddleNode(DoubleLinkedList* list){
+    if (isEmpty(list)){
+        return NULL;
+    }
+    // 使用快慢指针
+    Node* slow = list->head;
+    Node* fast = list->head;
+    // 快指针每次走两步，慢指针每次走一步
+    // 当快指针到达尾部时，慢指针就在中间
+    while (fast != NULL && fast->next != NULL){
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+    return slow;
+}
+
 int main(){
     DoubleLinkedList* list = createDoubleLinkedList();
     insertAtTail(list,1);
     insertAtTail(list,2);
     insertAtTail(list,3);
     printListForward(list);
+    printf(hasCycle(list) ? "true" : "false");
+    printf("\n");
 
-    
+    DoubleLinkedList* list2 = createDoubleLinkedList();
+    insertAtTail(list2,4);
+    insertAtTail(list2,5);
+    insertAtTail(list2,6);
+    printListForward(list2);
+    printf(hasCycle(list2) ? "true" : "false");
+    printf("\n%d",findMiddleNode(list2)->data);
+    printf("\n");
+
+    DoubleLinkedList* list3 = merge2Lists(list,list2);
+    printListForward(list3);
 
 
     insertAtPosition(list,4,2);
