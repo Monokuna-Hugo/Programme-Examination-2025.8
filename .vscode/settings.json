@@ -1,0 +1,21 @@
+{
+    "files.associations": {
+        "*.embeddedhtml": "html",
+        "climits": "c",
+        "cmath": "c",
+        "cstdio": "c",
+        "cstdlib": "c",
+        "limits": "c",
+        "new": "c",
+        "type_traits": "c",
+        "typeinfo": "c",
+        "stdio.h": "c",
+        "corecrt_stdio_config.h": "c",
+        "stdbool.h": "c",
+        "stdlib.h": "c",
+        "bit": "c",
+        "compare": "c",
+        "concepts": "c",
+        "malloc.h": "c"
+    }
+}
