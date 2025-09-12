@@ -372,6 +372,7 @@ int main(){
     insertAtTail(list2,4);
     insertAtTail(list2,5);
     insertAtTail(list2,6);
+    insertAtTail(list2,7);
     printListForward(list2);
     printf(hasCycle(list2) ? "true" : "false");
     printf("\n%d",findMiddleNode(list2)->data);

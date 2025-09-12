@@ -279,6 +279,55 @@ void reverseLinkedList(SingleLinkedList* list){
     printf("链表反转成功\n");
 }
 
+SingleLinkedList* mergeLinkedList(SingleLinkedList* list1,SingleLinkedList* list2){
+    SingleLinkedList* mergedList = createLinkedList();
+    Node* current1 = list1->head;
+    Node* current2 = list2->head;
+    while (current1 != NULL){
+        insertAtTail(mergedList,current1->data);
+        current1 = current1->next;
+    }
+    while (current2 != NULL){
+        insertAtTail(mergedList,current2->data);
+        current2 = current2->next;
+    }
+    return mergedList;
+}
+
+// 单链表的取值算法，获取指定位置的节点数据
+/*
+    1. 判断链表是否为空或位置是否无效
+    2. 初始化计数器和当前节点指针
+    3. 遍历链表找到指定位置的节点
+    4. 如果找到指定位置节点，返回其数据；否则返回 -1 表示未找到
+*/
+int getValueAtPosition(SingleLinkedList* list, int position) {
+    // 1. 判断链表是否为空或位置是否无效
+    if (isEmpty(list) || position <= 0) {
+        printf("链表为空或位置无效\n");
+        return -1;
+    }
+
+    // 2. 初始化计数器和当前节点指针
+    int count = 1;
+    Node* current = list->head;
+
+    // 3. 遍历链表找到指定位置的节点
+    while (current != NULL && count < position) {
+        current = current->next;
+        count++;
+    }
+
+    // 4. 如果找到指定位置节点，返回其数据；否则返回 -1 表示未找到
+    if (current != NULL) {
+        return current->data;
+    } else {
+        printf("未找到指定位置的节点\n");
+        return -1;
+    }
+}
+
+
 int main(){
     SingleLinkedList* list = createLinkedList();
 
