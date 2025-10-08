@@ -8,11 +8,11 @@
             "name": "LaunchC",              //  强制：就一个名字而已，但是是必须要有的（取任意自己喜欢的名字即可）
             "type": "cppdbg",                    //  强制：调试器的类型，Node debugger for  node, php for PHP , go for GO (C语言就固定是cppdbg)           
             "request": "launch",                 //  强制：launch/attach
-            "program": "${fileDirname}/problem.exe", // 可执行文件的路径
+            "program": "./problem.exe", // 可执行文件的路径
             "miDebuggerPath": "D:\\Environment\\msys2\\mingw64\\bin\\gdb.exe",    //  调试器的位置（根据实际情况调整）
             "args": [],                          //  调试参数
             "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",         //  当前工作目录
+            "cwd": "${fileWorkspaceFolderBasename}",         //  当前工作目录
             "environment": [],                   //  当前项目环境变量
             "externalConsole": true,
             "MIMode": "gdb",                     //  调试器模式/类型

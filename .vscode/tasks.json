@@ -10,10 +10,10 @@
                 "-g",
                 "${file}",
                 "-o",
-                "${fileDirname}\\problem.exe"
+                "problem.exe"
             ],
             "options": {
-                "cwd": "${fileDirname}"
+                "cwd": "${fileWorkspaceFolderBasename}"
             },
             "problemMatcher": [
                 "$gcc"

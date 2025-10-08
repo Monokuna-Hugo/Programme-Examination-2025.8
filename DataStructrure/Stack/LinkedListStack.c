@@ -35,9 +35,6 @@ int size(LinkedListStack* stack){
 }
 
 void push(LinkedListStack* stack, int data){
-    if (isFull(stack)){
-        return;
-    }
     Node* popNode = (Node*)malloc(sizeof(Node));
     popNode->data = data;
     popNode->next = stack->top;

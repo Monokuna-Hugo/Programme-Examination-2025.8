@@ -16,6 +16,7 @@
         "bit": "c",
         "compare": "c",
         "concepts": "c",
-        "malloc.h": "c"
+        "malloc.h": "c",
+        "string.h": "c"
     }
 }
