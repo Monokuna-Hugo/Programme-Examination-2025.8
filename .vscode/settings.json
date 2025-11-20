@@ -18,6 +18,8 @@
         "concepts": "c",
         "malloc.h": "c",
         "string.h": "c",
-        "math.h": "c"
+        "math.h": "c",
+        "cstdbool": "c",
+        "cstdint": "c"
     }
 }

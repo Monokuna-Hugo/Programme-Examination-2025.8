@@ -68,9 +68,9 @@ Node* createNode(int data){
     3.如果创建成功，则将新节点的下一个节点指针指向头节点
 */
 
-void insertAtHead(SingleLinkedList* list,int ddta){
+void insertAtHead(SingleLinkedList* list,int data){
     //1.创建新节点
-    Node* newNode = createNode(ddta);
+    Node* newNode = createNode(data);
     //2.如果创建失败，则返回
     if (isEmpty(list)){
         //如果链表为空，则将新节点赋值给头节点
@@ -90,9 +90,9 @@ void insertAtHead(SingleLinkedList* list,int ddta){
     3.遍历链表，找到最后一个节点
     4.将新节点赋值给最后一个节点的下一个节点指针
 */
-void insertAtTail(SingleLinkedList* list,int ddta){
+void insertAtTail(SingleLinkedList* list,int data){
     //1.创建新节点
-    Node* newNode = createNode(ddta);
+    Node* newNode = createNode(data);
     //2.如果创建失败，则返回
     if (isEmpty(list)){
         list->head = newNode;
@@ -115,7 +115,7 @@ void insertAtTail(SingleLinkedList* list,int ddta){
     4.将新节点赋值给前一个节点的下一个节点指针
     5.将当前节点赋值给新节点的下一个节点指针
 */
-void insertAtPosition(SingleLinkedList* list,int ddta,int position){
+void insertAtPosition(SingleLinkedList* list,int data,int position){
     //1.判断位置是否有效
     switch (position)
     {
@@ -124,11 +124,11 @@ void insertAtPosition(SingleLinkedList* list,int ddta,int position){
         printf("位置无效");
         return;
     case 1:
-        insertAtHead(list,ddta);
+        insertAtHead(list,data);
         return;
     }
     //2. 定义前后节点
-    Node* newNode = createNode(ddta);
+    Node* newNode = createNode(data);
     Node* current = list->head;
     Node* previous = NULL;
     int count = 0;
