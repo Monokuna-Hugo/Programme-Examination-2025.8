@@ -11,7 +11,7 @@ void BuildMaxHeap(int* arr,int arrSize){
 void AdjustHead(int* arr,int k,int arrSize){
 	int temp = arr[k];
 	for (int i = 2*k + 1;i < arrSize;i = 2*i + 1){
-		if (i + 1 < arrSize && arr[i] < arr[i + 1]) 
+		if (i  < arrSize -1 && arr[i] < arr[i + 1]) 
             i++;
 		if (temp >= arr[i]) break;
 		else{
